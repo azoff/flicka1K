@@ -58,4 +58,4 @@ i = e('input', {
     }
 });
 
-i[z] = 'love flickr';
+i[z] = 'Type Here!';
