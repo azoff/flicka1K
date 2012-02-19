@@ -12,7 +12,7 @@ _d = 'display:block;';
 
 // add styles
 e('style', {
-    innerHTML: '*{-moz-'+_t+'-webkit-'+_t+_t+';font:16px/1.8 Arial}input{'+_d+'width:25em;border:0}a{'+_b+'width:8em;height:8em;margin:0 0 -9px 0;overflow:hidden;text-decoration:none;display:inline-block;position:relative}a:hover{width:15em;height:15em;margin:-61px;z-index:2}div{'+_b+'color:#FFF;text-align:center;position:absolute;bottom:0;width:100%}img{'+_d+'margin:0 auto}'
+    innerHTML: '*{-moz-'+_t+'-webkit-'+_t+_t+';font:16px/1.8 Arial}input{'+_d+'width:25em;border:0}a{'+_b+'width:8em;height:8em;margin:0 0 -9px 0;overflow:hidden;text-decoration:none;display:inline-block;position:relative}a:hover{width:15em;height:15em;margin:-61px;z-index:2}div{'+_b+'color:#FFF;text-align:center;position:absolute;bottom:-9em;width:100%}a:hover div{bottom:0}img{'+_d+'margin:0 auto}'
 });
 
 // creates elements
@@ -58,4 +58,4 @@ i = e('input', {
     }
 });
 
-i[z] = 'Type Here!';
+i[z] = 'Type tags';
