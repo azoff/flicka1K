@@ -58,4 +58,4 @@ i = e('input', {
     }
 });
 
-i[z] = 'add,tags...';
+i[z] = 'love flickr';
