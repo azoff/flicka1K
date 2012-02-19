@@ -1,81 +1,61 @@
-var d = document, n = [], w, s = setTimeout, $ = 'title', $$ = 'length', $r = 'removeChild';
+// shorten references
+$ = document;
+t = 'title';
+z = 'placeholder';
+_ = 0;
+n = [];
 
-function e(tag, props, parent, prop) {
-    tag = d.createElement.call(d, tag);
+// css parts
+_t = 'transition:0.7s;';
+_b = 'background:rgba(0,0,0,0.8);';
+_d = 'display:block;';
+
+// add styles
+e('style', {
+    innerHTML: '*{-moz-'+_t+'-webkit-'+_t+_t+';font:16px/1.8 Arial}input{'+_d+'width:25em;border:0}a{'+_b+'width:8em;height:8em;margin:0 0 -9px 0;overflow:hidden;text-decoration:none;display:inline-block;position:relative}a:hover{width:15em;height:15em;margin:-61px;z-index:2}div{'+_b+'color:#FFF;text-align:center;position:absolute;bottom:0;width:100%}img{'+_d+'margin:0 auto}'
+});
+
+// creates elements
+function e(tag, props, prop) {
+    tag = $.createElement.call($, tag);
     for (prop in props)
         tag[prop] = props[prop];
-    (parent||b).appendChild(tag);
+    b.appendChild(tag);
     return tag;
 }
 
-function o(item, a, p) {
-    a = e('a', {
-        href: item.link,
-        innerHTML: '<p><img src="' + item.media.m + '"/><div>' + item[$] + '</div></p>'
-    });
-    s(function(){a.className = 'i';}, 200);
-    return a;
-}
-
+// parses flickr data
 function p(data) {
-    ii = data.items;
-    while (n[$$]) {
-        b[$r](n.pop());
+    d = data.items;
+    // delete existing nodes
+    while (n.length) {
+        b.removeChild(n.pop());
     }
-    while (ii[$$]) {
-        n.push(o(ii.shift()));
+    // add new nodes
+    while (o = d.shift()) {
+        n.push(e('a', {
+            href: o.link,
+            innerHTML: '<img src="' + o.media.m + '"/><div>' + o[t] + '</div>'
+        }));
     }
-    with(i) {
-        value = '';
-        placeholder = data[$];
-        blur();
-    }
+    i.value = '';
+    i[z] = data[t];
+    i.blur();
 }
 
-b.onload = function() {
-    b[$r](c);
-    wi = 'width:';
-    hi = ';height:';
-    po = ';position:';
-    _1 = '15em;';
-    _2 = '12em;';
-    x = wi+_1+hi+_1;
-    q = 'font:16px Arial;';
-    r = 'margin:0 auto;';
-    _ = 'overflow:hidden;';
-    u = 'transition:1s;';
-    f = 'display:block;';
-    op = 'opacity:';
-    e('style', d.getElementsByTagName('head')[0]);
-    i = e('input', {
-        placeholder: 'type...',
-        onkeydown: function() {
-            clearTimeout(w);
-            w = s(function(){
-                e('script', {
-                    src: 'http://tinyurl.com/azoff1/%26tags%3D' + encodeURIComponent(i.value)
-                });                
-            }, 700);
-        }
-    });
-    h = d.styleSheets[0];        
-    for (ss in (rr = {
-        input: q+f+wi+'25%;border:0',
-        body: q+r,
-        a: x+f+op+'0;float:left;margin-top:1em'+po+'relative',        
-        'a.i': op+'1',
-        p: r+_+wi+_2+hi+_2,
-        img: r+f,
-        div: _+wi+'100%'+po+'absolute;text-align:center;background:#FFF;'+op+'0;top:0',
-        'a:hover p': x,
-        'a:hover div': op+'0.9',
-        '*': '-webkit-'+u+'-moz-'+u+u
-    })) {
-        rrr = '{'+rr[ss]+'}';
-        if ((_ = 'insertRule') in h) {
-            h[_](ss + rrr, h.cssRules[$$]); 
-        } else {
-            h.addRule(ss, rrr); 
-        }
+// remove the canvas
+b.removeChild(c);
+
+// create the input and listener
+i = e('input', {
+    onkeydown: function(){
+        clearTimeout(_);
+        _ = setTimeout(function(){
+            e('script', {
+                src: 'http://tinyurl.com/azoff1/%26tags%3D' + encodeURIComponent(i.value)
+            });                
+        }, 700);
     }
-}
+});
+
+i[z] = 'add,tags...';
